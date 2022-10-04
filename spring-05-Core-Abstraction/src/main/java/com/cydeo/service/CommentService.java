@@ -4,6 +4,7 @@ import com.cydeo.model.Comment;
 import com.cydeo.proxy.CommentNotificationProxy;
 import com.cydeo.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
@@ -30,10 +31,20 @@ public class CommentService {
 
 
     //injection happens automatically when we create constructor (Autowired)
-    public CommentService(CommentRepository commentRepository, CommentNotificationProxy commentNotificationProxy) {
+    public CommentService(CommentRepository commentRepository, @Qualifier("EMAIL") CommentNotificationProxy commentNotificationProxy) {
         this.commentRepository = commentRepository;
         this.commentNotificationProxy = commentNotificationProxy;
     }
+
+    /*
+    @Qualifier: if different services require same
+    implementation at the same time we use this
+    annotation before the parameter in the constructor.
+    here we say to Spring always use emailCommentNotification
+    implementation. In the real application we will not have
+    more than one implementation of the interfaces. ??
+    Question: why do we have an interface than?
+     */
 
     public void publishComment(Comment comment){
         //save in the DB
