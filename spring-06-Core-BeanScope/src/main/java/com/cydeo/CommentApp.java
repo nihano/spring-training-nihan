@@ -19,9 +19,8 @@ public class CommentApp {
         CommentService cs2 = context.getBean(CommentService.class);
 
 
-        //they are same objects
-        System.out.println(cs1); //com.cydeo.service.CommentService@130c12b7
-        System.out.println(cs2); //com.cydeo.service.CommentService@130c12b7
+        System.out.println(cs1);
+        System.out.println(cs2);
         System.out.println(cs1==cs2);
 
 
