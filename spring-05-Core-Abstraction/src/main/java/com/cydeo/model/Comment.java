@@ -7,6 +7,4 @@ public class Comment {
 
     private String author;
     private String text;
-
-
 }
