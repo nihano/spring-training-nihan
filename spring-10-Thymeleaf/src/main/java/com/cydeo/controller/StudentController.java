@@ -6,12 +6,13 @@ import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("student")
 public class StudentController {
 
-    @RequestMapping("register") //localhost:8080/student/register
+    @RequestMapping("/register") //localhost:8080/student/register
     public String register(Model model){
         model.addAttribute("students", DataGenerator.createStudent());
 
@@ -20,8 +21,9 @@ public class StudentController {
     }
 
     @RequestMapping("/welcome") //localhost:8080/student/welcome
-    public String drop(){
+    public String welcome(@RequestParam int id){
 
+        System.out.println(id);
         return "student/welcome";
     }
 }
