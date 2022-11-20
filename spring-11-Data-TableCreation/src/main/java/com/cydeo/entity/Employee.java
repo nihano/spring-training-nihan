@@ -1,15 +1,26 @@
 package com.cydeo.entity;
 
-import org.springframework.context.annotation.Primary;
+import com.cydeo.enums.Gender;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
 
-@Entity //to create table in the DB without writing SQL code
-public class Employee {
-    //we need something unique as Primary Key
-    @Id //to make the field Primary Key
-    private int id;
-    private String name;
+
+@Entity
+@Table(name = "employees")
+@NoArgsConstructor
+@AllArgsConstructor
+public class Employee extends BaseEntity {
+
+    private String firstName;
+    private String lastName;
+    private String email;
+    @Column(columnDefinition = "DATE")
+    private LocalDate hireDate;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+    private int salary;
 
 }
