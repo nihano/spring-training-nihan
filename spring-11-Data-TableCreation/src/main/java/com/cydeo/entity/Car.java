@@ -10,12 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity//to create table in the DB without writing SQL code
 @NoArgsConstructor //when we work with Entity we need NoArgConstructor
 @Data
 //@AllArgsConstructor -> id will be provided by postgres, so we do not add @AllArgsConstructor
 public class Car {
 
+    //we need something unique as Primary Key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
