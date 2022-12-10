@@ -26,7 +26,8 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     private Status paymentStatus;
 
-    @OneToOne //table relationship
+    //@OneToOne (cascade = CascadeType.ALL)//instead of creatıng a repo for paymentDetail and save it in DB first we use cascade and wıll ALL whatever we do for payment wıll happen for paymentDetail obj as well in this caseç
+    @OneToOne (cascade ={CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="payment_detail_id") //to change the column name (this name is default anyway)
     private PaymentDetail paymentDetail;
 
