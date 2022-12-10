@@ -31,6 +31,8 @@ public class Payment {
     @JoinColumn(name="payment_detail_id") //to change the column name (this name is default anyway)
     private PaymentDetail paymentDetail;
 
+    @ManyToOne //(many payments one merchant)
+    private Merchant merchant;
     public Payment(LocalDate createdDate, BigDecimal amount, Status paymentStatus) {
         this.createdDate = createdDate;
         this.amount = amount;
