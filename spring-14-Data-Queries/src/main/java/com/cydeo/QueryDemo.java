@@ -45,5 +45,6 @@ public class QueryDemo implements CommandLineRunner {
         System.out.println("retrieveEmployeeDetail: " +employeeRepository.retrieveEmployeeDetail());
         System.out.println("retrieveEmployeeSalary: " + employeeRepository.retrieveEmployeeSalary());
 
+
     }
 }
