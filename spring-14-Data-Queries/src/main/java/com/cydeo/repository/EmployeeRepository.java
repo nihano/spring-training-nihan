@@ -1,5 +1,6 @@
 package com.cydeo.repository;
 
+import com.cydeo.entity.Department;
 import com.cydeo.entity.Employee;
 import org.hibernate.sql.Select;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -89,4 +90,12 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     //SORTING in desc order
     @Query("SELECT e FROM Employee e ORDER BY e.salary DESC")
     List<Employee> retrieveEmployeeSalaryOrderDesc();
+
+    //Native Query
+    @Query(value = "SELECT * FROM employees WHERE salary = ?1", nativeQuery = true)
+    List<Employee> retrieveEmployeeDetailBySalary(int salary);
+    
+
+
+
 }
