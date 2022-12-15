@@ -5,6 +5,7 @@ import com.cydeo.entity.Employee;
 import org.hibernate.sql.Select;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -94,8 +95,11 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     //Native Query
     @Query(value = "SELECT * FROM employees WHERE salary = ?1", nativeQuery = true)
     List<Employee> retrieveEmployeeDetailBySalary(int salary);
-    
 
+
+    //Named parameter
+    @Query("SELECT e FROM Employee e WHERE e.salary = :salary")
+    List<Employee> retrieveEmployeeSalary(@Param("salary") int salary);
 
 
 }
