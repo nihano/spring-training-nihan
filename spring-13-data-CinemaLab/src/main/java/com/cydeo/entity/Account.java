@@ -21,7 +21,7 @@ public class Account extends BaseEntity{
     private Integer age;
     private String postalCode;
     @Enumerated(EnumType.STRING)
-    private UserRole Role;
+    private UserRole role;
     @OneToOne(mappedBy = "account")// we do not want 2 foreign key, there is no FK in AccountDetails table
     private User user;
 
