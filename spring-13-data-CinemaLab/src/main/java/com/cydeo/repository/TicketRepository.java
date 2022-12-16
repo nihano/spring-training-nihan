@@ -47,7 +47,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     Integer countTicketByUserInDateRange(@Param("userId") Long userId, @Param("dateTime1") LocalDateTime dateTime1, @Param ("dateTime2") LocalDateTime dateTime2);
 
     //Write a native query to distinct all tickets by movie name
-    @Query(value = "SELECT DISTINCT(m.name) FROM ticket t JOIN movie_cinema mc ON mc.id = t.movie_cinema_id" +
+    @Query(value = "SELECT DISTINCT(m.name) FROM ticket t JOIN movie_cinema mc ON mc.id = t.movie_cinema_id " +
             "JOIN movie m ON m.id=mc.movie_id", nativeQuery = true)
     List<String> retrieveAllDistinctMovieNames();
 
