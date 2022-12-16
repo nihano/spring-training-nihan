@@ -60,6 +60,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
             "OR ad.state ILIKE concat('%', ?1 , '%')" +
             "OR city ILIKE concat('%', ?1 , '%')", nativeQuery = true)
     List<Account> retrieveBySearchCriteria(@Param("pattern") String pattern);
+    //if we do %?1?% it will search for exact characters inside the String ?1 not the parameter. we need to use concat
 
     //Write a native query to read all accounts with an age higher than a specific value
     @Query(value = "SELECT * FROM account_details WHERE age > ?1", nativeQuery = true)
