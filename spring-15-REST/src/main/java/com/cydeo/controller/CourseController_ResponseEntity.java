@@ -18,18 +18,20 @@ public class CourseController_ResponseEntity {
         this.courseService = courseService;
     }
 
+    //this is the usual way of creating API
     @GetMapping
     public ResponseEntity<List<CourseDTO>> getAllCourses(){
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)
                 .header("Version","Cydeo.V2")
-                .header("Operation","Get List")
+                .header("Operation", "Get List")
                 .body(courseService.getCourses());
     }
 
     @GetMapping("{id}")
     public ResponseEntity<CourseDTO> getCourseById(@PathVariable("id") long courseId){
-        return ResponseEntity.ok(courseService.getCourseById(courseId));
+        return ResponseEntity.ok((courseService.getCourseById(courseId)));//200 no header
+
     }
 
     @GetMapping("category/{name}")
@@ -38,24 +40,14 @@ public class CourseController_ResponseEntity {
     }
 
     @PostMapping
-    public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO course){
+    public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO courseDTO){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .header("Operation","Create")
-                .body(courseService.createCourse(course));
-
+                .header("Operation", "Create")
+                .body(courseService.createCourse(courseDTO));
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteCourseById(@PathVariable("id") Long courseId){
-        courseService.deleteCourseById(courseId);
-        return ResponseEntity.noContent().build();
-    }
 
-    @PutMapping("{id}")
-    public ResponseEntity<Void> updateCourse(@PathVariable("id") Long courseId,@RequestBody CourseDTO course){
-        courseService.updateCourse(courseId,course);
-        return ResponseEntity.noContent().build();
-    }
+
 
 }
