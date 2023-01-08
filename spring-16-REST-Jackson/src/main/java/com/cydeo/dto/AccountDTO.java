@@ -8,8 +8,8 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@JsonIgnoreProperties(value = {"address", "country"}, ignoreUnknown = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonIgnoreProperties(value = {"address", "country"}, ignoreUnknown = true) to ignore multiple fields
+@JsonIgnoreProperties(ignoreUnknown = true) //ignoreUnknown = true if there is anything coming from API to my app that I don't know, these things that are not known will get into our app
 public class AccountDTO {
 
     @JsonIgnore
@@ -21,7 +21,8 @@ public class AccountDTO {
     private Integer age;
     private String postalCode;
 
-    @JsonBackReference  // This field is not going to be serialized
+    @JsonBackReference  // This field is not going to be serialized, we can still send User info if we want
+//    @JsonIgnore we do not use in every-case this because it is because if want send user info we cannot. it will be ignored in request in respond
     private UserDTO user;
 
 }
