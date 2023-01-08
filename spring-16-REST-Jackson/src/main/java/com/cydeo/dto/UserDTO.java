@@ -14,7 +14,7 @@ public class UserDTO {
 
     private String email;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //user is able to send password, but not able to read password
     private String password;
     private String username;
     private UserRole role;
