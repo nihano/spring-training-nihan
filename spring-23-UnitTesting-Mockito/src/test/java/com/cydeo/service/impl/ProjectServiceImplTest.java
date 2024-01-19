@@ -31,6 +31,8 @@ class ProjectServiceImplTest {
     @Test
     void getByProjectCode_Tes(){
 
+        //STUBBING
+
         // Given
         when(projectRepository.findByProjectCode(anyString())).thenReturn(new Project()); //Stubbing defining the behaviour and return the result
         when(projectMapper.convertToDto(any(Project.class))).thenReturn(new ProjectDTO());
